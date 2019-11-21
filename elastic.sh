@@ -23,7 +23,7 @@ echo "export TERM=xterm" >> /etc/bashrc
 
 echo "[TASK 5] Install packages on all VM's"
 sudo yum update -y
-sudo yum install sshpass bash-completion java-1.8.0-openjdk -y
+sudo yum install wget sshpass bash-completion java-1.8.0-openjdk -y
 
 echo "[TASK 5] Downlad Elastic search version ${ES_VERSION}"
 wget ${ES_URI}
