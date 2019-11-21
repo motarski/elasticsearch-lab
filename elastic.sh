@@ -1,6 +1,7 @@
 #!/bin/bash
 
 readonly ES_VERSION=2.4.2
+readonly ES_URI="https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/zip/elasticsearch/${ES_VERSION}/elasticsearch-${ES_VERSION}.zip"
 
 echo "[TASK 1] Update Elastic search hosts in hosts /etc/hosts file"
 cat >>/etc/hosts<<EOF
@@ -21,6 +22,8 @@ echo "[TASK 4] Update vagrant user's bashrc file"
 echo "export TERM=xterm" >> /etc/bashrc
 
 echo "[TASK 5] Install packages on all VM's"
-sudo apt-get update
-sudo apt-get install sshpass bash-completion -y
-cp elasticsearch-${ES_VERSION}.zip /home/vagrant
+sudo yum update -y
+sudo yum install sshpass bash-completion java-1.8.0-openjdk -y
+
+echo "[TASK 5] Downlad Elastic search version ${ES_VERSION}"
+wget ${ES_URI}
